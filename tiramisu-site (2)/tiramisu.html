@@ -1,0 +1,407 @@
+<title>Тіра Мі Су</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;800&family=Onest:wght@400;500;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+/* Layout: великий типографічний герой + розріз шматка збоку; далі асиметрична сітка фактів і інтерактивний розріз зі складом.
+   Палітра з самого десерту: еспресо, мускарпоне, жовток (єдиний акцент), какао. */
+:root {
+  --bg: #1B100B;
+  --surface: #2B1B12;
+  --fg: #F3E8D5;
+  --muted: #BDA98F;
+  --line: rgba(243, 232, 213, 0.16);
+  --accent: #FFC53D;
+  --accent-ink: #1B100B;
+  --accent-text: #FFC53D;
+  --glow: rgba(255, 197, 61, 0.16);
+  --l-cocoa: #4D2B16;
+  --l-cocoa-top: #5E3519;
+  --l-cream: #F4E8CB;
+  --l-cookie: #D2A25F;
+  --l-soak: #93602E;
+  --on-cream: #2B170D;
+  --on-cocoa: #F3E8D5;
+  --edge: rgba(20, 10, 5, 0.45);
+  --plate: #DCD1BE;
+  --plate-in: #EFE7D8;
+  --dust: #A9724A;
+  --f-display: 'Unbounded', 'Arial Black', 'Segoe UI', sans-serif;
+  --f-body: 'Onest', 'Segoe UI', system-ui, sans-serif;
+  --f-mono: 'JetBrains Mono', ui-monospace, Consolas, monospace;
+  color-scheme: dark;
+}
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    --bg: #F4ECDD;
+    --surface: #E9DEC9;
+    --fg: #2A170F;
+    --muted: #6B5645;
+    --line: rgba(42, 23, 15, 0.18);
+    --accent-ink: #2A170F;
+    --accent-text: #7A4C00;
+    --glow: rgba(255, 181, 30, 0.38);
+    --l-cream: #EFDCAE;
+    --plate: #FFFFFF;
+    --plate-in: #F6F0E4;
+    --dust: #6B3E1F;
+    color-scheme: light;
+  }
+}
+:root[data-theme="light"] {
+  --bg: #F4ECDD;
+  --surface: #E9DEC9;
+  --fg: #2A170F;
+  --muted: #6B5645;
+  --line: rgba(42, 23, 15, 0.18);
+  --accent-ink: #2A170F;
+  --accent-text: #7A4C00;
+  --glow: rgba(255, 181, 30, 0.38);
+  --l-cream: #EFDCAE;
+  --plate: #FFFFFF;
+  --plate-in: #F6F0E4;
+  --dust: #6B3E1F;
+  color-scheme: light;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--f-body);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; }
+.wrap {
+  max-width: 1160px;
+  margin-inline: auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.eyebrow, .tag, .mono, .chips li {
+  font-family: var(--f-mono);
+  font-weight: 500;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.eyebrow { color: var(--accent-text); margin: 0 0 1rem; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+
+/* header */
+.top { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.75rem 1.5rem; padding-block: 1.25rem; }
+.mark { font-family: var(--f-mono); font-weight: 500; font-size: 1rem; text-decoration: none; letter-spacing: 0.04em; }
+.top nav { display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; }
+.top nav a { text-decoration: none; color: var(--muted); font-size: 0.95rem; }
+.top nav a:hover { color: var(--fg); }
+
+/* hero */
+.hero { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); gap: 2rem 3rem; align-items: center; padding-block: clamp(1rem, 3vw, 2.5rem) clamp(2.5rem, 6vw, 5rem); }
+.hero-copy { min-width: 0; }
+h1 { margin: 0; font-family: var(--f-display); font-weight: 800; font-size: clamp(3.6rem, 13vw, 8rem); line-height: 0.95; letter-spacing: -0.03em; }
+h1 .w { display: block; }
+h1 .w2 { color: var(--accent-text); }
+h1 .up { display: inline-block; width: 0.5em; height: 0.5em; margin-left: 0.14em; color: var(--accent-text); vertical-align: 0.08em; }
+.gloss { margin: 1.5rem 0 0; max-width: 34rem; color: var(--muted); }
+.gloss b { color: var(--fg); font-weight: 500; }
+.slogan { margin: 1.25rem 0 0; font-family: var(--f-display); font-weight: 600; font-size: clamp(1.1rem, 2.6vw, 1.5rem); line-height: 1.3; color: var(--accent-text); text-wrap: balance; }
+.ctas { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.75rem; }
+.btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.85rem 1.4rem; border-radius: 999px; background: var(--accent); color: var(--accent-ink); font-weight: 700; text-decoration: none; border: 2px solid var(--accent); transition: transform 0.15s ease; }
+.btn:hover { transform: translateY(-2px); }
+.btn.ghost { background: transparent; color: var(--fg); border-color: var(--line); }
+.btn.ghost:hover { border-color: var(--fg); }
+.chips { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 2rem 0 0; padding: 0; list-style: none; }
+.chips li { padding: 0.4rem 0.8rem; border: 1px solid var(--line); border-radius: 999px; color: var(--muted); font-size: 0.72rem; }
+
+.hero-art { margin: 0; min-width: 0; max-width: 540px; width: 100%; justify-self: center; background: radial-gradient(circle at 50% 58%, var(--glow), transparent 68%); }
+.hero-art svg { display: block; width: 100%; height: auto; overflow: visible; }
+.plate { fill: var(--plate); }
+.plate-in { fill: var(--plate-in); }
+.shadow { fill: #000; opacity: 0.28; }
+.lc { fill: var(--l-cocoa); }
+.lt { fill: var(--l-cocoa-top); }
+.lcr { fill: var(--l-cream); }
+.lck { fill: url(#soak); }
+.edge { stroke: var(--edge); stroke-width: 1; }
+.pore { fill: var(--l-soak); opacity: 0.55; }
+.dustdot { fill: var(--dust); }
+.side { filter: brightness(0.8); }
+.lbl { font: 500 12.5px var(--f-mono); fill: var(--muted); }
+.tick { stroke: var(--muted); stroke-width: 1; }
+@media (prefers-reduced-motion: no-preference) {
+  .rise { animation: rise 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) backwards; }
+  .rise:nth-of-type(1) { animation-delay: 0.45s; }
+  .rise:nth-of-type(2) { animation-delay: 0.35s; }
+  .rise:nth-of-type(3) { animation-delay: 0.25s; }
+  .rise:nth-of-type(4) { animation-delay: 0.15s; }
+  .rise:nth-of-type(5) { animation-delay: 0.05s; }
+  .speck { animation: drift 4s ease-in-out infinite alternate; }
+}
+@keyframes rise { from { transform: translateY(-26px); opacity: 0; } }
+@keyframes drift { to { transform: translateY(-9px); } }
+
+/* sections */
+.sect { padding-block: clamp(3rem, 7vw, 6rem); scroll-margin-top: 1rem; }
+h2 { margin: 0; font-family: var(--f-display); font-weight: 600; font-size: clamp(1.55rem, 4vw, 2.5rem); line-height: 1.15; letter-spacing: -0.015em; text-wrap: balance; max-width: 22ch; }
+.sect-head { margin-bottom: clamp(1.75rem, 4vw, 3rem); }
+
+/* facts */
+.facts { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 1rem; }
+.fact { grid-column: span 6; min-width: 0; padding: clamp(1.25rem, 3vw, 2rem); border-radius: 22px; background: var(--surface); display: flex; flex-direction: column; gap: 0.6rem; }
+.fact p { margin: 0; }
+.fact h3 { margin: 0; font-family: var(--f-display); font-weight: 600; font-size: 1.15rem; line-height: 1.3; text-wrap: balance; }
+.tag { color: var(--accent-text); }
+.fact.big { grid-column: span 7; background: var(--accent); color: var(--accent-ink); }
+.fact.big .tag { color: var(--accent-ink); }
+.fact.big h3 { font-size: clamp(1.4rem, 3.2vw, 2.1rem); line-height: 1.15; }
+.fact.big p:last-child { font-size: 1.1rem; max-width: 34rem; }
+.fact.s5 { grid-column: span 5; }
+.fact.s7 { grid-column: span 7; }
+
+/* ingredients */
+.ing-wrap { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr); gap: 2rem clamp(2rem, 6vw, 5rem); align-items: start; }
+.ing { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+.ing li { border-bottom: 1px solid var(--line); }
+.ing button { all: unset; box-sizing: border-box; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 0.15rem 1rem; width: 100%; padding: 1rem 0.5rem; cursor: pointer; border-radius: 10px; }
+.ing button:hover { background: var(--surface); }
+.ing button:focus-visible { outline: 3px solid var(--accent); outline-offset: -3px; }
+.ing button[aria-pressed="true"] { background: var(--surface); }
+.ing .name { font-family: var(--f-display); font-weight: 600; font-size: 1.05rem; }
+.ing button[aria-pressed="true"] .name { color: var(--accent-text); }
+.ing .tag { color: var(--muted); align-self: center; text-align: right; }
+.ing .desc { grid-column: 1 / -1; color: var(--muted); font-size: 0.98rem; }
+.ing-note { margin: 1.25rem 0 0; color: var(--muted); font-size: 0.95rem; max-width: 40rem; }
+
+.stack-fig { margin: 0; position: sticky; top: 1.5rem; }
+.stack { display: flex; flex-direction: column; border-bottom: 8px solid var(--plate); border-radius: 18px 18px 0 0; overflow: hidden; }
+.layer { display: flex; align-items: center; padding: 0 1.1rem; font-family: var(--f-mono); font-weight: 500; font-size: 0.8rem; letter-spacing: 0.04em; transition: opacity 0.25s ease; }
+.layer.cocoa { height: 44px; background: var(--l-cocoa-top); color: var(--on-cocoa); }
+.layer.cream { height: 92px; background: var(--l-cream); color: var(--on-cream); }
+.layer.cookie { height: 80px; background: linear-gradient(var(--l-cookie), var(--l-soak)); color: var(--on-cream); }
+.stack.has .layer:not(.on) { opacity: 0.28; }
+.stack-fig figcaption { margin-top: 1rem; color: var(--muted); font-size: 0.92rem; }
+
+/* benefit */
+.benefit { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); gap: 1.5rem clamp(2rem, 6vw, 5rem); align-items: start; }
+.benefit p.lead { margin: 0; font-size: clamp(1.25rem, 2.6vw, 1.8rem); line-height: 1.45; font-weight: 500; max-width: 36rem; text-wrap: pretty; }
+
+/* closing band */
+.band { background: var(--accent); color: var(--accent-ink); }
+.band .wrap { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1.5rem 2rem; padding-block: clamp(2.5rem, 6vw, 4rem); }
+.band h2 { max-width: 18ch; }
+.band .btn { background: var(--accent-ink); color: var(--accent); border-color: var(--accent-ink); }
+.foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.5rem 1.5rem; padding-block: 1.5rem; color: var(--muted); font-size: 0.85rem; }
+
+@media (max-width: 860px) {
+  .hero { grid-template-columns: minmax(0, 1fr); }
+  .hero-art { max-width: 460px; }
+  .ing-wrap, .benefit { grid-template-columns: minmax(0, 1fr); }
+  .stack-fig { position: static; }
+}
+@media (max-width: 680px) {
+  .facts { grid-template-columns: minmax(0, 1fr); }
+  .fact, .fact.big, .fact.s5, .fact.s7 { grid-column: auto; }
+}
+</style>
+
+<header class="wrap top">
+  <a class="mark" href="#top">tiramisù</a>
+  <nav aria-label="Розділи">
+    <a href="#istoriya">Історія</a>
+    <a href="#sklad">Склад</a>
+    <a href="#koryst">Користь</a>
+  </nav>
+</header>
+
+<main>
+  <section class="wrap hero" id="top">
+    <div class="hero-copy">
+      <p class="eyebrow">Італійський десерт · без духовки</p>
+      <h1>
+        <span class="sr">Тірамісу</span>
+        <span class="w w1" aria-hidden="true">Тіра</span>
+        <span class="w w2" aria-hidden="true">мі</span>
+        <span class="w w3" aria-hidden="true">су<svg class="up" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20V5M5 11l7-7 7 7" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </h1>
+      <p class="gloss"><b>tira mi sù</b> з італійської означає «підніми мене». Назва вже все пояснює: кава, крем і печиво, які ставлять на ноги після важкого дня.</p>
+      <p class="slogan">Один шматок — і ти знову в грі.</p>
+      <div class="ctas">
+        <a class="btn" href="#sklad">Що всередині</a>
+        <a class="btn ghost" href="#istoriya">Звідки він узявся</a>
+      </div>
+      <ul class="chips" aria-label="Коротко про десерт">
+        <li>без випікання</li>
+        <li>від 4 год у холодильнику</li>
+        <li>7 інгредієнтів</li>
+      </ul>
+    </div>
+
+    <figure class="hero-art">
+      <svg viewBox="0 0 480 430" role="img" aria-label="Шматок тірамісу в розрізі на тарілці: какао зверху, під ним по черзі шари крему маскарпоне та печива савоярді">
+        <defs>
+          <linearGradient id="soak" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" style="stop-color: var(--l-cookie)"/>
+            <stop offset="1" style="stop-color: var(--l-soak)"/>
+          </linearGradient>
+          <pattern id="pores" width="14" height="10" patternUnits="userSpaceOnUse">
+            <circle cx="3" cy="3" r="1.3" class="pore"/>
+            <circle cx="10" cy="7.5" r="1" class="pore"/>
+          </pattern>
+          <pattern id="dust" width="9" height="9" patternUnits="userSpaceOnUse">
+            <circle cx="2" cy="2" r="0.9" class="dustdot" opacity="0.7"/>
+            <circle cx="6.5" cy="6" r="0.7" class="dustdot" opacity="0.7"/>
+          </pattern>
+        </defs>
+
+        <ellipse cx="240" cy="345" rx="222" ry="56" class="plate"/>
+        <ellipse cx="240" cy="343" rx="178" ry="40" class="plate-in"/>
+        <ellipse cx="244" cy="338" rx="168" ry="22" class="shadow"/>
+
+        <g class="side">
+          <polygon points="340,150 400,118 400,128 340,160" class="lc edge"/>
+          <polygon points="340,160 400,128 400,176 340,208" class="lcr edge"/>
+          <polygon points="340,208 400,176 400,220 340,252" class="lck edge"/>
+          <polygon points="340,252 400,220 400,268 340,300" class="lcr edge"/>
+          <polygon points="340,300 400,268 400,312 340,344" class="lck edge"/>
+        </g>
+
+        <g class="rise"><rect x="80" y="150" width="260" height="10" class="lc edge"/></g>
+        <g class="rise"><rect x="80" y="160" width="260" height="48" class="lcr edge"/></g>
+        <g class="rise">
+          <rect x="80" y="208" width="260" height="44" class="lck edge"/>
+          <rect x="80" y="208" width="260" height="44" fill="url(#pores)"/>
+        </g>
+        <g class="rise"><rect x="80" y="252" width="260" height="48" class="lcr edge"/></g>
+        <g class="rise">
+          <rect x="80" y="300" width="260" height="44" class="lck edge"/>
+          <rect x="80" y="300" width="260" height="44" fill="url(#pores)"/>
+        </g>
+
+        <polygon points="80,150 340,150 400,118 140,118" class="lt edge"/>
+        <polygon points="80,150 340,150 400,118 140,118" fill="url(#dust)"/>
+
+        <g class="lbl-g">
+          <line x1="70" y1="155" x2="78" y2="155" class="tick"/><text x="66" y="159" text-anchor="end" class="lbl">какао</text>
+          <line x1="70" y1="184" x2="78" y2="184" class="tick"/><text x="66" y="188" text-anchor="end" class="lbl">крем</text>
+          <line x1="70" y1="230" x2="78" y2="230" class="tick"/><text x="66" y="234" text-anchor="end" class="lbl">савоярді</text>
+          <line x1="70" y1="276" x2="78" y2="276" class="tick"/><text x="66" y="280" text-anchor="end" class="lbl">крем</text>
+          <line x1="70" y1="322" x2="78" y2="322" class="tick"/><text x="66" y="326" text-anchor="end" class="lbl">савоярді</text>
+        </g>
+
+        <g aria-hidden="true">
+          <circle class="dustdot speck" cx="150" cy="92" r="2.2" style="animation-delay: 0s"/>
+          <circle class="dustdot speck" cx="232" cy="70" r="1.7" style="animation-delay: -1.2s"/>
+          <circle class="dustdot speck" cx="300" cy="96" r="2.4" style="animation-delay: -2.1s"/>
+          <circle class="dustdot speck" cx="352" cy="62" r="1.5" style="animation-delay: -0.6s"/>
+          <circle class="dustdot speck" cx="190" cy="48" r="1.3" style="animation-delay: -1.8s"/>
+          <circle class="dustdot speck" cx="272" cy="36" r="1.9" style="animation-delay: -2.7s"/>
+          <circle class="dustdot speck" cx="118" cy="66" r="1.4" style="animation-delay: -3.3s"/>
+        </g>
+      </svg>
+    </figure>
+  </section>
+
+  <section class="wrap sect" id="istoriya">
+    <div class="sect-head">
+      <p class="eyebrow">Походження</p>
+      <h2>Італія досі сперечається, чий це десерт</h2>
+    </div>
+    <div class="facts">
+      <article class="fact big">
+        <p class="tag">Назва</p>
+        <h3>«Підніми мене» — це не метафора</h3>
+        <p>Tira mi sù перекладається як «підніми мене вгору». Кава, цукор і жовтки в складі справді підбадьорюють, тож назва пояснює, навіщо цей десерт існує.</p>
+      </article>
+      <article class="fact s5">
+        <p class="tag">Тревізо · 1960-ті — 1970-ті</p>
+        <h3>Найпопулярніша версія</h3>
+        <p>Більшість джерел називають батьківщиною ресторан Le Beccherie в Тревізо (Венето). Там кондитер Роберто Лінгуанотто, за цією версією, зібрав рецепт наприкінці 1960-х — на початку 1970-х.</p>
+      </article>
+      <article class="fact s5">
+        <p class="tag">Фріулі · 1950-ті?</p>
+        <h3>Конкуренти з півночі</h3>
+        <p>Регіон Фріулі-Венеція-Джулія стверджує, що рецепт з'явився в нього ще в 1950-х. У 2017 році тірамісу внесли до регіонального переліку традиційних продуктів. Венето з цим сперечається.</p>
+      </article>
+      <article class="fact s7">
+        <p class="tag">Сієна · легенда</p>
+        <h3>Десерт для герцога</h3>
+        <p>За старою легендою, до візиту Козімо III Медічі в Сієні приготували «zuppa del duca» — герцогський десерт, схожий на тірамісу. Доказів мало, зате історія гарна.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="wrap sect" id="sklad">
+    <div class="sect-head">
+      <p class="eyebrow">Склад</p>
+      <h2>Сім інгредієнтів і жодної магії</h2>
+    </div>
+    <div class="ing-wrap">
+      <div>
+        <ul class="ing">
+          <li><button type="button" data-k="cream" aria-pressed="true"><span class="name">Маскарпоне</span><span class="tag">крем</span><span class="desc">Ніжний італійський вершковий сир. Саме він робить крем густим і шовковим.</span></button></li>
+          <li><button type="button" data-k="cookie" aria-pressed="false"><span class="name">Савоярді</span><span class="tag">шари</span><span class="desc">Легке сухе печиво-«язички». Вбирає каву, але не розвалюється.</span></button></li>
+          <li><button type="button" data-k="cookie" aria-pressed="false"><span class="name">Еспресо</span><span class="tag">просочення</span><span class="desc">Міцна кава, остигла, без цукру. Печиво швидко вмочуємо, а не тримаємо в ній.</span></button></li>
+          <li><button type="button" data-k="cream" aria-pressed="false"><span class="name">Жовтки</span><span class="tag">крем</span><span class="desc">Дають кремові колір, насиченість і густину.</span></button></li>
+          <li><button type="button" data-k="cream" aria-pressed="false"><span class="name">Цукор</span><span class="tag">крем</span><span class="desc">Збиваємо з жовтками, поки маса не посвітліє.</span></button></li>
+          <li><button type="button" data-k="cocoa" aria-pressed="false"><span class="name">Какао-порошок</span><span class="tag">верх</span><span class="desc">Гіркий шар зверху балансує солодкий крем.</span></button></li>
+          <li><button type="button" data-k="cookie" aria-pressed="false"><span class="name">Марсала або амаретто</span><span class="tag">по бажанню</span><span class="desc">Лише для дорослих. Без алкоголю теж смачно.</span></button></li>
+        </ul>
+        <p class="ing-note">Жовтки йдуть у крем сирими, тому бери свіжі яйця з перевіреного місця.</p>
+      </div>
+
+      <figure class="stack-fig">
+        <div class="stack has" id="stack">
+          <div class="layer cocoa" data-k="cocoa">какао</div>
+          <div class="layer cream on" data-k="cream">крем: маскарпоне, жовтки, цукор</div>
+          <div class="layer cookie" data-k="cookie">савоярді + еспресо</div>
+          <div class="layer cream on" data-k="cream">крем: маскарпоне, жовтки, цукор</div>
+          <div class="layer cookie" data-k="cookie">савоярді + еспресо</div>
+        </div>
+        <figcaption>Натисни на інгредієнт, і побачиш, у якому шарі він живе.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="wrap sect" id="koryst">
+    <div class="benefit">
+      <div>
+        <p class="eyebrow">Користь</p>
+        <h2>Чому він працює</h2>
+      </div>
+      <p class="lead">Тірамісу — це десерт, а не суперфуд, але в ньому є що любити. Еспресо додає бадьорості, а яйця з маскарпоне дають білок і кальцій, тож це не лише цукор. А ще його не треба випікати: миска, міксер і кілька годин у холодильнику роблять усю роботу.</p>
+    </div>
+  </section>
+</main>
+
+<section class="band">
+  <div class="wrap">
+    <h2>Підніми собі настрій. Серйозно.</h2>
+    <a class="btn" href="#top">Нагору <span aria-hidden="true">↑</span></a>
+  </div>
+</section>
+
+<footer class="wrap foot">
+  <span class="mono">tiramisù · концепція лендінгу</span>
+  <span>Історичні версії походження суперечливі, тому в тексті стоять «за однією з версій».</span>
+</footer>
+
+<script>
+(function () {
+  var buttons = document.querySelectorAll('.ing button');
+  var layers = document.querySelectorAll('#stack .layer');
+  function pick(btn) {
+    var key = btn.getAttribute('data-k');
+    buttons.forEach(function (b) { b.setAttribute('aria-pressed', b === btn ? 'true' : 'false'); });
+    layers.forEach(function (l) { l.classList.toggle('on', l.getAttribute('data-k') === key); });
+  }
+  buttons.forEach(function (b) {
+    b.addEventListener('click', function () { pick(b); });
+    b.addEventListener('mouseenter', function () { pick(b); });
+  });
+})();
+</script>
